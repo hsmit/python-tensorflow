@@ -11,6 +11,8 @@ shape W = (3,4)
 shape x = (4,1)
 
 b was left out for now
+
+Example was based on TensorFlow Getting started (https://www.tensorflow.org/get_started/get_started).
 '''
 
 W = tf.Variable([
