@@ -81,7 +81,7 @@ W1 = tf.Variable([
     [20., 20.],
     [-20., -20.],
 ], dtype=tf.float32, name = 'Weights')
-x = tf.placeholder(shape=(2,1), dtype=tf.float32, name='input')
+x = tf.placeholder(shape=(2,None), dtype=tf.float32, name='input')
 b1 = tf.Variable([[-10.],[30.]], dtype=tf.float32, name = 'bias1')
 
 
@@ -100,15 +100,20 @@ a = tf.sigmoid(tf.matmul(W2, hidden1) + b2)
 init = tf.global_variables_initializer()
 sess.run(init)
 
-y = tf.placeholder(shape=(1,1), dtype=tf.float32)
+y = tf.placeholder(shape=(1, None), dtype=tf.float32)
 
 loss = tf.reduce_sum(tf.square(a - y)) # sum of the squares
 optimizer = tf.train.GradientDescentOptimizer(0.01)
 train = optimizer.minimize(loss)
 
 # training data
-x_train = [[1], [0]]
-y_train = [[1]]
+x_train = [
+    [1, 0, 0, 1], 
+    [0, 1, 0, 1]
+]
+y_train = [
+    [1, 1, 0, 0]
+]
  
 # training loop
 init = tf.global_variables_initializer()
@@ -118,7 +123,7 @@ for i in range(1000):
 
 # evaluate training accuracy
 curr_W1, curr_W2, curr_b1, curr_b2, curr_loss = sess.run([W1, W2, b1, b2, loss], {x: x_train, y: y_train})
-print("\nW: %s \nb: %s \nloss: %s"%(curr_W1, curr_b1, curr_loss))
+print("\nW: %s \nb: %s \nloss: %s" % (curr_W1, curr_b1, curr_loss))
 
 
 
