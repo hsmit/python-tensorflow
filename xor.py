@@ -72,6 +72,18 @@ curr_W1, curr_W2, curr_b1, curr_b2, curr_loss = sess.run(
     [W1, W2, b1, b2, loss], {x: x_train, y:y_train})
 print("\nW1: %s \nW2: %s \nb1: %s \nb2: %s \nloss: %s" % (curr_W1, curr_W2, curr_b1, curr_b2, curr_loss))
 
-# result is now 6e-05
+'''
+W1: [[ 5.487288    5.48769665]
+     [ 7.25183201  7.25342321]]
+
+W2: [[-12.99903297  12.35037708]]
+
+b1: [[-8.40147972]
+     [-3.31719804]]
+
+b2: [[-5.85005236]]
+
+loss: 6.10213e-05
+'''
 
 
